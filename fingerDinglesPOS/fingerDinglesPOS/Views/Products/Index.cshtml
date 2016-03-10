@@ -1,0 +1,79 @@
+﻿@model IEnumerable<fingerDinglesPOS.Models.Product>
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>Inventory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+    
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Product Name", "Index", new { style = "color:blue" }, new { sortOrder = ViewBag.ProductNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Sale Price
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Sku
+        </th>
+        <th>
+            In Stock
+        </th>
+        <th>
+            Icon
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var picture = Url.Content("~/Image/" + Html.DisplayFor(modelItem => item.ProductImageName));
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <img src="@picture" width="120" height="120" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit",  new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />

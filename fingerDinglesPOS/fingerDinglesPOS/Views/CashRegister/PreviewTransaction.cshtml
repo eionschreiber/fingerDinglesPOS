@@ -1,0 +1,52 @@
+﻿@model fingerDinglesPOS.Models.Cart
+
+@{
+    ViewBag.Title = "PreviewTransaction";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PreviewTransaction</title>
+</head>
+<body>
+    <h2>Preview Transaction</h2>
+    <p>
+
+       <p>Checkout Time: @Model.checkoutTime</p> 
+       
+  
+        @foreach (var thing in Model.serviceList)
+        {
+            <p>Service Name: @thing.ServiceName</p>
+            <p>Price: $@thing.SalePrice</p>
+        }
+        @foreach (var thing in Model.ProductID)
+        {
+            <p>Product Name: @thing.ProductName</p>
+            <p>Price: $@thing.SalesPrice</p>
+        }
+        <p>Total: $@Model.TransactionTotal</p>
+        
+    @*@using (Html.BeginForm())
+    {   
+    <input type="text" name="otherEmail" class="form-control text-center" placeholder="Email Receipt" />
+    <br />
+    <p><button class="btn btn-lg btn-success btn-block" type="submit" onclick="location.href=@Html.ActionLink("AddTransaction", "CashRegister")">Send</button></p>
+    }*@
+    @using (Html.BeginForm("AddTransaction", "CashRegister"))
+    {
+        <input type="text" name="otherEmail" placeholder="Email for Recipt" />
+        <input type="submit" value="Submit" />
+    }
+
+    @*@Html.ActionLink("Check Out", "AddTransaction")*@
+
+        
+
+    
+
+</body>
+</html>

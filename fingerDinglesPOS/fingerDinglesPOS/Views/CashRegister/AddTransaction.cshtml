@@ -1,0 +1,23 @@
+﻿@model fingerDinglesPOS.Models.Cart
+
+@{
+    ViewBag.Title = "AddTransaction";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddTransaction</title>
+    
+</head>
+<body>
+    <h2>Purchase Complete</h2>
+    <div> 
+        <p>Transaction Total: $@Model.TransactionTotal</p>
+        <p>Time: @Model.checkoutTime</p>
+        <p>Transaction ID: @Model.ID</p>
+    </div>
+</body>
+</html>

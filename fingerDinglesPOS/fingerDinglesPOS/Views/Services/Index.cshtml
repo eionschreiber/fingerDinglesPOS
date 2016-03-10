@@ -1,0 +1,59 @@
+﻿@model IEnumerable<fingerDinglesPOS.Models.Service>
+
+@{
+    ViewBag.Title = "Services";
+}
+
+<h2>Services</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Service Name", "Index", new { sortOrder = ViewBag.ServiceNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Sale Price
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Icon
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var picture = Url.Content("~/Image/" + Html.DisplayFor(modelItem => item.ServiceImageName));
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <img src="@picture" width="120" height="120" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />

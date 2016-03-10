@@ -1,0 +1,57 @@
+﻿@model fingerDinglesPOS.ViewModel.ProductServiceCombo
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<style>
+    .floating-box {
+        float: left;
+        width: 110px;
+        height: 170px;
+        margin: 10px;
+        border-radius: 3px;
+        background-color: lightskyblue;
+    }
+</style>
+
+    <h2>Cash Register</h2>
+           @using (Html.BeginForm("AddToProductList", "CashRegister", FormMethod.Post))
+           {
+               foreach (var item in Model.productStuff)
+               {
+                <script>
+                 function DisplayMessage() {
+                  alert("Item added to Cart");
+         }
+                </script>
+                   var picture = Url.Content("~/Image/" + Html.DisplayFor(modelItem => item.ProductImageName));
+                    <div class="floating-box">
+                    <input type="image" src=@picture name="itemName" width="110" height="110" value=@item.ProductName class="btn btn-default" onclick="javascript:DisplayMessage()">
+                    <figcaption><strong>@item.ProductName</strong></figcaption>
+                    <figcaption><strong>$@item.SalesPrice</strong></figcaption></div>
+                
+               }
+
+           }
+@using (Html.BeginForm("AddToServiceList", "CashRegister", FormMethod.Post))
+{
+    foreach (var item in Model.serviceStuff)
+    {
+        <script>
+        function DisplayMessage () {
+            alert("Item added to Cart");
+         }
+        </script>
+        var picture = Url.Content("~/Image/" + Html.DisplayFor(modelItem => item.ServiceImageName));
+        <div class="floating-box">
+            <input type="image" src=@picture name="itemName" width="110" height="110" value=@item.ServiceName class="btn btn-default" onclick="javascript:DisplayMessage()" >
+            <figcaption><strong>@item.ServiceName</strong></figcaption>
+            <figcaption><strong>$@item.SalePrice</strong></figcaption>
+        </div>
+    }
+}
+@*<a href="@Url.Action("PreviewTransaction", "CashRegister")"><input class="btn btn-success" value="Checkout" /></a>*@
+@Html.ActionLink("Check Out", "PreviewTransaction" )
+
+

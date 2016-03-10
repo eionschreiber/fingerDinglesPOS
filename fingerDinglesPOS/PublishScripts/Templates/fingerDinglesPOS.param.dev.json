@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "POSfingerDingles"
+  },
+  "hostingPlanName": {
+    "value": "fingerDingles"
+  },
+  "siteLocation": {
+    "value": "North Central US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "fingerdingles"
+  },
+  "serverLocation": {
+    "value": "East US"
+  },
+  "administratorLogin": {
+    "value": "fingerdinglesAdmin"
+  },
+  "administratorLoginPassword": {
+    "value": "Cookie27"
+  },
+  "databaseName": {
+    "value": "POSfingerDingles_db"
+  }
+}
