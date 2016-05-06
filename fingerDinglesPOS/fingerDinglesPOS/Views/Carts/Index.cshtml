@@ -12,39 +12,31 @@
     <title>Index</title>
 </head>
 <body>
-    <table class="table">
+    <table class="transaction-history-table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.checkoutTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TransactionTotal)
-            </th>
-            <th>
-                Products
-            </th>
-            <th>
-                Services
+            <th class="transaction-history-title">
+               Transactions
             </th>
             <th></th>
         </tr>
     
     @foreach (var item in Model) {
-        <tr>
+        <tr class="table-data-transaction-history">
             <td>
-                @Html.DisplayFor(modelItem => item.checkoutTime)
+                Time: @Html.DisplayFor(modelItem => item.checkoutTime)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionTotal)
-            </td>
+
             @foreach (var thing in item.ProductID)
             {
-                <td>@thing.ProductName $@thing.SalesPrice</td>
+                <td class="product-float">@thing.ProductName</td><td class="product-float-two">$@thing.SalesPrice</td>
             }
             @foreach (var thing in item.serviceList)
             {
-                <td>@thing.ServiceName $@thing.SalePrice</td>
+                <td class="product-float">@thing.ServiceName</td><td class="product-float-two">$@thing.SalePrice</td>
             }
+            <td>
+               Transaction Total: $@Html.DisplayFor(modelItem => item.TransactionTotal)
+            </td>
             <td>
 
             </td>
